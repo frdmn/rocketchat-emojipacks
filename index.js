@@ -1,10 +1,7 @@
 const {	Rocketchat} = require('@rocket.chat/sdk');
+const fetch = require("node-fetch");
 
-const {
-	TRY_REGISTER = 'yes',
-	SSL_ENABLED,
-	NO_SUBSCRIBE,
-} = process.env;
+global.fetch = fetch;
 
 const host = 'rocketchat.iwelt.de'
 
