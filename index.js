@@ -10,6 +10,7 @@ const credentials = {
     password: 'frdmn',
 };
 
+// Function to connect to RocketChat instance using SDK
 async function connect() {
     const client = new Rocketchat({
         logger:console,
@@ -18,6 +19,11 @@ async function connect() {
     });
 
     await client.connect();
+    await client.login(credentials);
+
+    const names = await client.users.onlineNames();
+    console.log(names);
 }
 
+// Execute connect function
 connect()
