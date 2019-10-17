@@ -1,0 +1,16 @@
+{
+  "name": "211_rocketchat-emojipacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@rocket.chat/sdk": "^1.0.0-alpha.31",
+    "@types/node": "^12.7.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
