@@ -3,7 +3,12 @@ const fetch = require("node-fetch");
 
 global.fetch = fetch;
 
-const host = 'rocketchat.iwelt.de'
+// Test credentials
+const host = 'http://rocketchat.local:3000'
+const credentials = {
+    username: 'frdmn',
+    password: 'frdmn',
+};
 
 async function connect() {
     const client = new Rocketchat({
