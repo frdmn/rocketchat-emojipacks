@@ -14,7 +14,7 @@ async function connect() {
     const client = new Rocketchat({
         logger:console,
         host,
-        useSsl:true,
+        useSsl: host.match("^https") ? true : false
     });
 
     await client.connect();
