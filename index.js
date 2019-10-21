@@ -2,6 +2,15 @@ const {	Rocketchat} = require('@rocket.chat/sdk');
 const fetch = require("node-fetch");
 
 global.fetch = fetch;
+global.FormData = require('form-data');
+
+// const logger = false || {
+// 	debug: (...args) => true || console.log(args),
+// 	info: (...args) => true || console.log(args),
+// 	warning: (...args) => true || console.log(args),
+// 	warn: (...args) => true || console.log(args),
+// 	error: (...args) => { console.error(args)},
+// };
 
 // Test credentials
 const host = 'http://rocketchat.local:3000'
