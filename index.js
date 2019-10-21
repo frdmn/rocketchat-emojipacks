@@ -10,20 +10,23 @@ global.FormData = require('form-data');
 // 	warn: (...args) => true || console.log(args),
 // 	error: (...args) => { console.error(args)},
 // };
+// Load config from file
+const config = require('./config.json');
 
-// Test credentials
-const host = 'http://rocketchat.local:3000'
+// Populate credentials object
 const credentials = {
-    username: 'frdmn',
-    password: 'frdmn',
+    username:config.username,
+    password:config.password
+};
+
 };
 
 // Function to connect to RocketChat instance using SDK
 async function connect() {
     const client = new Rocketchat({
         logger:console,
-        host,
-        useSsl: host.match("^https") ? true : false
+        host: config.hostname,
+        useSsl: config.hostname.match("^https") ? true : false
     });
 
     await client.connect();
