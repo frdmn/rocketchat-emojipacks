@@ -1,4 +1,4 @@
-const {	Rocketchat} = require('@rocket.chat/sdk');
+const {	Rocketchat } = require('@rocket.chat/sdk');
 
 global.fetch = require("node-fetch");
 global.FormData = require('form-data');
