@@ -1,7 +1,6 @@
 const {	Rocketchat} = require('@rocket.chat/sdk');
-const fetch = require("node-fetch");
 
-global.fetch = fetch;
+global.fetch = require("node-fetch");
 global.FormData = require('form-data');
 
 // const logger = false || {
