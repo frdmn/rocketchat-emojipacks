@@ -32,8 +32,28 @@ async function connect() {
     await client.connect();
     await client.login(credentials);
 
-    const names = await client.users.onlineNames();
-    console.log(names);
+    await uploadEmoji(client);
+}
+
+// Function to list emojis
+async function listEmoji(client) {
+    const emojis = await client.get('emoji-custom.list');
+    console.log(emojis.emojis.update.length + ' emojis found');
+}
+
+// Function to upload a custom emoji
+async function uploadEmoji(client) {
+    const form = new FormData();
+    form.append('emoji', 'test');
+    form.append('name', 'test');
+    form.append('aliases', 'test');
+
+    const emojis = await client.post('emoji-custom.create', form, {
+        customHeaders:{
+            "Content-Type":"multipart/form-data"
+        }
+    });
+    console.log(emojis);
 }
 
 // Execute connect function
