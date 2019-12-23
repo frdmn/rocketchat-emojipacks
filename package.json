@@ -1,8 +1,8 @@
 {
-  "name": "211_rocketchat-emojipacks",
+  "name": "rocketchat-emojipacks",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple CLI to bulk upload emojipacks to Rocket.Chat instances",
+  "main": "emojipacks.js",
   "dependencies": {
     "@rocket.chat/sdk": "^1.0.0-alpha.31",
     "@types/node": "^12.7.12",
