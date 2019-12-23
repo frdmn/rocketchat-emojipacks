@@ -8,7 +8,10 @@
     "@types/node": "^12.7.12",
     "commander": "^4.0.1",
     "form-data": "^2.5.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "yaml": "^1.7.2"
   },
   "devDependencies": {},
   "scripts": {
