@@ -47,14 +47,15 @@ async function uploadEmoji(client) {
     form.append('emoji', 'test');
     form.append('name', 'test');
     form.append('aliases', 'test');
-
-    const emojis = await client.post('emoji-custom.create', form, {
-        customHeaders:{
-            "Content-Type":"multipart/form-data"
+    client.getBody = (data) => data;
+    const emojis = await client.post("emoji-custom.create", form, true, new RegExp(''), {
+        customHeaders: {
+            ...client.client._headers,
         }
-    });
+    })
     console.log(emojis);
 }
 
+
 // Execute connect function
-connect()
+connect();
