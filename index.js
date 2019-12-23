@@ -7,6 +7,7 @@ const path = require('path')
 // Construct args parser
 program
     .option('-y, --yaml <url>', 'URL to Emojipacks YAML file')
+    .option('-d, --debug', 'Enable debug mode')
     .parse(process.argv);
 
 // Show help if no option is given
@@ -36,6 +37,12 @@ const logger = false || {
 	error: (...args) => { console.error(args)},
 };
 
+function debug(msg){
+    if (program.debug){
+        console.log(msg);
+    }
+}
+
 // Function to connect to RocketChat instance using SDK
 async function connect() {
     const client = new Rocketchat({
@@ -44,12 +51,14 @@ async function connect() {
         useSsl: config.hostname.match("^https") ? true : false
     });
 
-    console.log('Logging in "' + config.username + '@'+ config.hostname + '"...');
+    debug('Logging into "'+ config.hostname + '" as "' + config.username + '"...');
     await client.connect();
     await client.login(credentials);
 
     if (program.yaml) {
+        debug('Parsing available emojis from Emojipack "' + program.yaml  + '"...')
         var emojipack = YAML.parse(await request(program.yaml));
+        debug('Found ' + emojipack.emojis.length  + ' emojis to import')
 
         for(emoji of emojipack.emojis){
             // Construct object to process for upload
@@ -62,6 +71,9 @@ async function connect() {
             await uploadEmoji(client, emojiObject);
         }
     }
+
+    // Exit process without error code
+    process.exit(0);
 }
 
 // // Function to list emojis
@@ -72,7 +84,7 @@ async function connect() {
 
 // Function to upload a custom emoji
 async function uploadEmoji(client, emojiObject) {
-    console.log('Trying to upload emoji "' + emojiObject.name + '"...');
+    debug('Trying to upload emoji "' + emojiObject.name + '"...');
     const form = new FormData();
     form.append('emoji', emojiObject.emoji, 'emoji.' + path.extname(emojiObject.src));
     form.append('name', emojiObject.name);
@@ -86,10 +98,11 @@ async function uploadEmoji(client, emojiObject) {
 
     // Check for API response
     if(response.success){
-        console.log('=> Successfully uploaded "' + emojiObject.name + '"!');
+        console.log('Successfully uploaded "' + emojiObject.name + '"!');
     } else {
-        console.log('=> Couldn\'t upload "' + emojiObject.name + '": ' + response.error);
+        console.log('Couldn\'t upload "' + emojiObject.name + '": ' + response.error);
     }
 }
 
+// Start connection to Rocket.Chat API
 connect();
