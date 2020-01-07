@@ -8,7 +8,7 @@ CLI tool to upload [emojipacks](https://github.com/lambtron/emojipacks) emoji pa
 
 ## Installation
 
-1. Make sure you've installed all requirements
+1. Make sure you've met all [requirements](#requirements--dependencies)
 2. Clone this repository:
 
     ```shell
