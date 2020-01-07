@@ -15,10 +15,10 @@ CLI tool to upload [emojipacks](https://github.com/lambtron/emojipacks) emoji pa
     git clone https://github.com/frdmn/rocketchat-emojipacks
     ```
 
-3. Install the project using `make`:
+3. Install the project dependencies using `npm`:
 
     ```shell
-    make install
+    npm i
     ```
 
 ## Usage
