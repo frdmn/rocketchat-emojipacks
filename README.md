@@ -21,6 +21,22 @@ CLI tool to upload [emojipacks](https://github.com/lambtron/emojipacks) emoji pa
     npm i
     ```
 
+4. Run in your terminal:
+
+    ```shell
+    node ./emojipacks.js
+    ```
+
+    ```
+    Usage: emojipacks [options]
+
+    Options:
+      -y, --yaml <url>       URL to Emojipacks YAML file
+      -p, --prefix <prefix>  prefix which is used infront of any emoji name
+      -d, --debug            enable debug mode
+      -h, --help             output usage information
+    ```
+
 ## Usage
 
 Here's a short explanation how to use `rocketchat-emojipacks`:
