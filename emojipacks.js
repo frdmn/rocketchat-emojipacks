@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const {	Rocketchat } = require('@rocket.chat/sdk');
 const program = require('commander');
 const request = require('request-promise');
@@ -7,7 +8,8 @@ const path = require('path')
 // Construct args parser
 program
     .option('-y, --yaml <url>', 'URL to Emojipacks YAML file')
-    .option('-d, --debug', 'Enable debug mode')
+    .option('-p, --prefix <prefix>', 'prefix which is used infront of any emoji name')
+    .option('-d, --debug', 'enable debug mode')
     .parse(process.argv);
 
 // Show help if no option is given
@@ -67,6 +69,10 @@ async function connect() {
                 emoji: await request({uri: emoji.src, encoding: null}),
                 name: emoji.name
             };
+
+            if(program.prefix){
+                emojiObject.name = program.prefix + '-' + emoji.name
+            }
 
             await uploadEmoji(client, emojiObject);
         }
