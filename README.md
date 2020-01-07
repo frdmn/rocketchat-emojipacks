@@ -1,6 +1,6 @@
 # rocketchat-emojipacks
 
-CLI tool to upload [emojipacks](https://github.com/lambtron/emojipacks) emoji packages to Rockat.Chat instances:
+CLI tool to upload [emojipacks](https://github.com/lambtron/emojipacks) emoji packages to Rocket.Chat instances:
 
 [![](https://i.imgur.com/kUmjWaF.png)](https://up.frd.mn/js2B7s.mp4)
 
